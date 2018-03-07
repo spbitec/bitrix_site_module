@@ -6,4 +6,4 @@ Sceleton of the site propertys module
 \Bitrix\Main\Loader::includeModule('spbitec.lib');
 
 get Option
-COption::GetOptionString('spbitec.lib', 'main_instagram_api');
+COption::GetOptionString('spbitec.lib', 'property1');
