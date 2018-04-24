@@ -5,5 +5,7 @@ Sceleton of the site propertys module
 * Add to /local/modules/php_interface/init.php 
 \Bitrix\Main\Loader::includeModule('spbitec.lib');
 
-get Option
+* get Option
 COption::GetOptionString('spbitec.lib', 'property1');
+* use lib module
+\Spbitec\Lib\Iblock::iblock_property_translate();
