@@ -1,6 +1,6 @@
 # 1C-Bitrix Universal site module
 Site propertys and common library module. Connfigured for every site 
-[Spbitec ltd.](http://spbitec.ru "Заголовок ссылки") 2018
+[Spbitec ltd.](http://spbitec.ru "Spbitec ltd.") 2018
 
 ### Install
 * Copy Folder to **/local/modules/**
