@@ -1,5 +1,6 @@
-# bitrix site_module
-Site propertys module. Connfigured for every site 
+# 1C-Bitrix Universal site module
+Site propertys and common library module. Connfigured for every site 
+Spbitec ltd. 2018
 
 ### Install
 * Copy Folder to **/local/modules/**
