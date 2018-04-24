@@ -15,7 +15,7 @@
  *  
  */
 
-namespace spbitec;
+namespace Spbitec\Lib;
 
 class CRedirector{
    private static $debug=false;
