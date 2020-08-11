@@ -4,95 +4,111 @@ namespace Spbitec\Lib;
 
 /*
 if(\Bitrix\Main\Loader::includeModule('spbitec.lib')) {
-	\Spbitec\Lib\Iblock::iblock_property_translate();
-	\Spbitec\Lib\Iblock::getPropertyEnums();
-	\Spbitec\Lib\Iblock::getSection(); 
+\Spbitec\Lib\Iblock::iblock_property_translate();
+\Spbitec\Lib\Iblock::getPropertyEnums();
+\Spbitec\Lib\Iblock::getSection(); 
 }
 */
 
 class Iblock{
-   static function item_translate($arItem){ //1.1 Òðàíñëèðóåò ìåðîïðèÿòèå äëÿ âûâîäà
+static function item_translate($arItem){ //1.1 Ã’Ã°Ã Ã­Ã±Ã«Ã¨Ã°Ã³Ã¥Ã² Ã¬Ã¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã¥ Ã¤Ã«Ã¿ Ã¢Ã»Ã¢Ã®Ã¤Ã 
 
-      $arItem['DETAIL_PAGE_URL']='/'.trim($arItem['DETAIL_PAGE_URL'],'/').'/';
-      return $arItem;
-   }
-
-
-   static function iblock_property_translate($property){ //1.1 Òðàíñëèðóåò ìíîæåñòâåííîå ñâîéñòâî ïðèâÿçêè ê ýëåìåíòàì èôíîáëîêà
-      $ret=array();
-      foreach ($property['VALUE'] as $valid){
-         $arSelect = Array("ID", "IBLOCK_ID", "NAME", "DATE_ACTIVE_FROM","PROPERTY_*");
-         $arFilter = Array("IBLOCK_ID"=>$property['LINK_IBLOCK_ID'],"ID"=>$valid); 
-         $res = \CIBlockElement::GetList(Array(), $arFilter, false,   $arSelect); 
-         while($ob = $res->GetNextElement()){  
-            $arFields = $ob->GetFields();   
-            $arProps = $ob->GetProperties();            
-            $arFields['PROPERTIES']=$arProps;            
-            $ret[]=$arFields; 
-         }
-      }        
-      return $ret;
-   }
-
-   /*
-   * Âîçâðàùàåò ìàññèâ èäåíòèôèêàòîðîâ è çíà÷åíèé ñïèñêîâûõ ñâîéñòâ èíôîáëîêà.
-   * [:prop_code][:enum_xmlid]=:enum_id
-   * Íàïðèìåð:
-   * [prop_accepted][yes]=10
-   * [prop_accepted][no]=11
-   * [prop_color][green]=25
-   * [prop_color][red]=26
-   *
-   * Ïàðàìåòðû: $ibId - èäåíòèôèêàòîð èíôîáëîêà (IBLOCK_ID)
-   */
-
-   static function getPropertyEnums($ibId){
-      $properties = \CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), Array("ACTIVE"=>"Y", "PROPERTY_TYPE"=>"L","IBLOCK_ID"=>$ibId));
-      while ($prop_fields = $properties->GetNext()) {
-         $property_enums = \CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$ibId, "CODE"=>$prop_fields['CODE']));
-         while($enum_fields = $property_enums->GetNext()){
-            $prop[$prop_fields['CODE']][$enum_fields["XML_ID"]]=$enum_fields["ID"];
-         } 
-      }
-      return $prop;
-   }
-
-   /*
-   * Âîçâðàùàåò èíôîðìàöèþ î ðàçäåëå èíôîáëîêîâ ñ ïåðåìåííûìè âêëàäêè SEO   
-   * Ïàðàìåòðû: $sectionId - èäåíòèôèêàòîð ñåêöèè
-   */
-
-   static function getSectionById($sectionId){
-      if (!$sectionId) return false;
-
-      $section=array();
-      $res = \CIBlockSection::GetByID($sectionId);
-
-      if($section = $res->GetNext()){
-
-         $ipropValues = new \Bitrix\Iblock\InheritedProperty\SectionValues(
-            $section["IBLOCK_ID"],
-            $section["ID"]
-         );
-         $section['IPROPERTY_VALUES']=$ipropValues->getValues();
-
-         return $section;
-      }  
-      return false;
-   }
+$arItem['DETAIL_PAGE_URL']='/'.trim($arItem['DETAIL_PAGE_URL'],'/').'/';
+return $arItem;
+}
 
 
-   /*
-   * Âîçâðàùàåò èíôîðìàöèþ î ðàçäåëå èíôîáëîêîâ ñ ïåðåìåííûìè âêëàäêè SEO   
-   * Ïàðàìåòðû: $sectionCode - êîä ñåêöèè
-   */  
+static function iblock_property_translate($property){ //1.1 Ã’Ã°Ã Ã­Ã±Ã«Ã¨Ã°Ã³Ã¥Ã² Ã¬Ã­Ã®Ã¦Ã¥Ã±Ã²Ã¢Ã¥Ã­Ã­Ã®Ã¥ Ã±Ã¢Ã®Ã©Ã±Ã²Ã¢Ã® Ã¯Ã°Ã¨Ã¢Ã¿Ã§ÃªÃ¨ Ãª Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã Ã¬ Ã¨Ã´Ã­Ã®Ã¡Ã«Ã®ÃªÃ 
+$ret=array();
+foreach ($property['VALUE'] as $valid){
+ $arSelect = Array("ID", "IBLOCK_ID", "NAME", "DATE_ACTIVE_FROM","PROPERTY_*");
+ $arFilter = Array("IBLOCK_ID"=>$property['LINK_IBLOCK_ID'],"ID"=>$valid); 
+ $res = \CIBlockElement::GetList(Array(), $arFilter, false,   $arSelect); 
+ while($ob = $res->GetNextElement()){  
+    $arFields = $ob->GetFields();   
+    $arProps = $ob->GetProperties();            
+    $arFields['PROPERTIES']=$arProps;            
+    $ret[]=$arFields; 
+ }
+}        
+return $ret;
+}
 
-   static function getSectionByCode($sectionCode){
-      if (!$sectionCode) return false;
-      $res =\CIBlockSection::GetList(false,array('CODE'=>$sectionCode), false,array('UF_*'));
-      $ar_res = $res->GetNext();
-      return self::getSectionById($ar_res['ID']);  
-   }
+static function iblock_get($iblock_id,$item_id){ //1.1 Ð¢Ñ€Ð°Ð½ÑÐ»Ð¸Ñ€ÑƒÐµÑ‚ Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²ÐµÐ½Ð½Ð¾Ðµ ÑÐ²Ð¾Ð¹ÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¸Ð²ÑÐ·ÐºÐ¸ Ðº ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°Ð¼ Ð¸Ñ„Ð½Ð¾Ð±Ð»Ð¾ÐºÐ°
+$ret=array();
+
+$arSelect = Array("ID", "IBLOCK_ID", "NAME", "DATE_ACTIVE_FROM","PROPERTY_*");
+$arFilter = Array("IBLOCK_ID"=>$iblock_id,"ID"=>$item_id); 
+$res = \CIBlockElement::GetList(Array(), $arFilter, false,   $arSelect); 
+while($ob = $res->GetNextElement()){  
+ $arFields = $ob->GetFields();   
+ $arProps = $ob->GetProperties();            
+ $arFields['PROPERTIES']=$arProps;            
+ $ret=$arFields; 
+}
+
+return $ret;
+}
+
+/*
+* Ã‚Ã®Ã§Ã¢Ã°Ã Ã¹Ã Ã¥Ã² Ã¬Ã Ã±Ã±Ã¨Ã¢ Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã°Ã®Ã¢ Ã¨ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã© Ã±Ã¯Ã¨Ã±ÃªÃ®Ã¢Ã»Ãµ Ã±Ã¢Ã®Ã©Ã±Ã²Ã¢ Ã¨Ã­Ã´Ã®Ã¡Ã«Ã®ÃªÃ .
+* [:prop_code][:enum_xmlid]=:enum_id
+* ÃÃ Ã¯Ã°Ã¨Ã¬Ã¥Ã°:
+* [prop_accepted][yes]=10
+* [prop_accepted][no]=11
+* [prop_color][green]=25
+* [prop_color][red]=26
+*
+* ÃÃ Ã°Ã Ã¬Ã¥Ã²Ã°Ã»: $ibId - Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã¨Ã­Ã´Ã®Ã¡Ã«Ã®ÃªÃ  (IBLOCK_ID)
+*/
+
+static function getPropertyEnums($ibId){
+$properties = \CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), Array("ACTIVE"=>"Y", "PROPERTY_TYPE"=>"L","IBLOCK_ID"=>$ibId));
+while ($prop_fields = $properties->GetNext()) {
+ $property_enums = \CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$ibId, "CODE"=>$prop_fields['CODE']));
+ while($enum_fields = $property_enums->GetNext()){
+    $prop[$prop_fields['CODE']][$enum_fields["XML_ID"]]=$enum_fields["ID"];
+ } 
+}
+return $prop;
+}
+
+/*
+* Ã‚Ã®Ã§Ã¢Ã°Ã Ã¹Ã Ã¥Ã² Ã¨Ã­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¾ Ã® Ã°Ã Ã§Ã¤Ã¥Ã«Ã¥ Ã¨Ã­Ã´Ã®Ã¡Ã«Ã®ÃªÃ®Ã¢ Ã± Ã¯Ã¥Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã»Ã¬Ã¨ Ã¢ÃªÃ«Ã Ã¤ÃªÃ¨ SEO   
+* ÃÃ Ã°Ã Ã¬Ã¥Ã²Ã°Ã»: $sectionId - Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã±Ã¥ÃªÃ¶Ã¨Ã¨
+*/
+
+static function getSectionById($sectionId){
+if (!$sectionId) return false;
+
+$section=array();
+$res = \CIBlockSection::GetByID($sectionId);
+
+if($section = $res->GetNext()){
+
+ $ipropValues = new \Bitrix\Iblock\InheritedProperty\SectionValues(
+    $section["IBLOCK_ID"],
+    $section["ID"]
+ );
+ $section['IPROPERTY_VALUES']=$ipropValues->getValues();
+
+ return $section;
+}  
+return false;
+}
+
+
+/*
+* Ã‚Ã®Ã§Ã¢Ã°Ã Ã¹Ã Ã¥Ã² Ã¨Ã­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¾ Ã® Ã°Ã Ã§Ã¤Ã¥Ã«Ã¥ Ã¨Ã­Ã´Ã®Ã¡Ã«Ã®ÃªÃ®Ã¢ Ã± Ã¯Ã¥Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã»Ã¬Ã¨ Ã¢ÃªÃ«Ã Ã¤ÃªÃ¨ SEO   
+* ÃÃ Ã°Ã Ã¬Ã¥Ã²Ã°Ã»: $sectionCode - ÃªÃ®Ã¤ Ã±Ã¥ÃªÃ¶Ã¨Ã¨
+*/  
+
+static function getSectionByCode($sectionCode){
+if (!$sectionCode) return false;
+$res =\CIBlockSection::GetList(false,array('CODE'=>$sectionCode), false,array('UF_*'));
+$ar_res = $res->GetNext();
+return self::getSectionById($ar_res['ID']);  
+}
 
 
 }
