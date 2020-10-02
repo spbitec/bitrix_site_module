@@ -27,10 +27,9 @@ Class spbitec_lib extends CModule
         $this->MODULE_DESCRIPTION = GetMessage("MODULE_DESCRIPTION");
     }
 
-    function DoInstall()
-    {
-    
-         global $DOCUMENT_ROOT, $APPLICATION;
+   function DoInstall(){    
+      global $DOCUMENT_ROOT, $APPLICATION;
+      
         RegisterModule("spbitec.lib");
      //   $APPLICATION->IncludeAdminFile("Установка модуля dev_module", $DOCUMENT_ROOT."/bitrix/modules/dev_module/install/step1.php");        
 
@@ -46,11 +45,16 @@ Class spbitec_lib extends CModule
                 $APPLICATION->IncludeAdminFile(GetMessage("FORM_INSTALL_TITLE"),
                 $_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/form/install/step2.php");
         }*/
+       if (!file_exists($_SERVER["DOCUMENT_ROOT"].'/local/')) mkdir($_SERVER["DOCUMENT_ROOT"].'/local/');
+       if (!file_exists($_SERVER["DOCUMENT_ROOT"].'/local/config/')) mkdir($_SERVER["DOCUMENT_ROOT"].'/local/config/');
+       
+       @copy(__DIR__."/../config/spbitec.lib.cfg.php",$_SERVER["DOCUMENT_ROOT"].'/local/config/spbitec.lib.cfg.php');
     }
 
-    function DoUninstall()
-    {
+    function DoUninstall(){
       UnRegisterModule("spbitec.lib");
+           
+      
     /*    global $DB, $APPLICATION, $step;
         $FORM_RIGHT = $APPLICATION->GetGroupRight("form");
         if ($FORM_RIGHT=="W")
