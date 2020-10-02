@@ -11,6 +11,9 @@ For use lib Classes
 * Add to **/local/php_interface/init.php**
 `\Bitrix\Main\Loader::includeModule('spbitec.lib');`
 
+### Configure
+* /config/spbitec.lib.cfg.php
+* Use php array $spbitecLibCfg=[] to configure tabs and ooptions
 
 
 ### Use
