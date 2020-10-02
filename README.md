@@ -12,7 +12,7 @@ For use lib Classes
 `\Bitrix\Main\Loader::includeModule('spbitec.lib');`
 
 ### Configure
-* /config/spbitec.lib.cfg.php
+* Copy /config/spbitec.lib.cfg.php to /local/config/spbitec.lib.cfg.php
 * Use php array $spbitecLibCfg=[] to configure tabs and ooptions
 
 ### Using
