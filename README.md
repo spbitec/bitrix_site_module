@@ -4,7 +4,7 @@ Site propertys and common library module. Connfigured for every site
 
 ### Install
 * Copy Folder to **/local/modules/**
-* Add to **/local/modules/php_interface/init.php**
+* Add to **/local/php_interface/init.php**
 `\Bitrix\Main\Loader::includeModule('spbitec.lib');`
 
 ### Use
