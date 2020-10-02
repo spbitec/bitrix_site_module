@@ -3,9 +3,15 @@ Site propertys and common library module. Connfigured for every site
 [Spbitec ltd.](http://spbitec.ru "Spbitec ltd.") 2018
 
 ### Install
-* Copy Folder to **/local/modules/**
+* Copy Folder **spbitec.lib** to **/local/modules/**
+* Go ro `/bitrix/admin/partner_modules.php?lang=ru` and install **spbitec.lib** module
+* Find settings in `/bitrix/admin/settings.php?lang=ru&mid=spbitec.lib&mid_menu=1`
+
+For use lib Classes
 * Add to **/local/php_interface/init.php**
 `\Bitrix\Main\Loader::includeModule('spbitec.lib');`
+
+
 
 ### Use
 1. get Option `COption::GetOptionString('spbitec.lib', 'property1');`
