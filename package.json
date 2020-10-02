@@ -1,0 +1,11 @@
+{
+  "name": "spbitec/bitrix_site_module",
+  "version": "1.0.0",
+  "description": "bitrix_site_module",
+  "repository": {
+    "url": "https://example.com/your-username/my-new-project",
+    "type": "git"
+  },
+  "author": "Your Name <you@example.com>",
+  "license": "MIT"
+}
