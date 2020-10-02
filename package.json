@@ -1,5 +1,5 @@
 {
-  "name": "spbitec/bitrix_site_module",
+  "name": "@spbitec/bitrix_site_module",
   "version": "1.0.0",
   "description": "bitrix_site_module",
   "repository": {
