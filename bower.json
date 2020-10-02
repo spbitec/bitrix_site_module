@@ -1,8 +1,5 @@
 {
- "name": "spbitec/bitrix_site_module",
-  "type": "library",
-  "description": "spbitec.ru bitrix_site_module",
-  "keywords": [],
-  "homepage": "https://spbitec.ru",
-  "license": "MIT"
+  "dependencies": {
+    "angular-cli": "spbitec/bitrix_site_module#^1.0.0"
+  }
 }
