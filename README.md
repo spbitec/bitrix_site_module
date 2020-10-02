@@ -15,8 +15,7 @@ For use lib Classes
 * /config/spbitec.lib.cfg.php
 * Use php array $spbitecLibCfg=[] to configure tabs and ooptions
 
-
-### Use
+### Using
 1. get Option `COption::GetOptionString('spbitec.lib', 'property1');`
 2. use lib module `\Spbitec\Lib\Iblock::iblock_property_translate();`
 
