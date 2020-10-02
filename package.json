@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "bitrix_site_module",
   "repository": {
-    "url": "https://example.com/your-username/my-new-project",
+    "url": "https://github.com/spbitec/bitrix_site_module.git",
     "type": "git"
   },
-  "author": "Your Name <you@example.com>",
+  "author": "spbitec <info@spbitec.ru>",
   "license": "MIT"
 }
