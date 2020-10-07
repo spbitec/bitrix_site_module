@@ -3,6 +3,7 @@ Site propertys and common library module. Connfigured for every site
 [Spbitec ltd.](http://spbitec.ru "Spbitec ltd.") 2018
 
 ### Install
+* git clone https://github.com/spbitec/bitrix_site_module.git
 * Copy Folder **spbitec.lib** to **/local/modules/**
 * Go ro `/bitrix/admin/partner_modules.php?lang=ru` and install **spbitec.lib** module
 * Find settings in `/bitrix/admin/settings.php?lang=ru&mid=spbitec.lib&mid_menu=1`
