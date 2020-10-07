@@ -13,9 +13,9 @@ For use lib Classes
 `\Bitrix\Main\Loader::includeModule('spbitec.lib');`
 
 ### Configure
-* Copy /config/spbitec.lib.cfg.php to /local/config/spbitec.lib.cfg.php
+* Check or copy /config/spbitec.lib.cfg.php to /local/config/spbitec.lib.cfg.php
 * Use php array $spbitecLibCfg=[] to configure tabs and ooptions
-
+ 
 ### Using
 1. get Option `COption::GetOptionString('spbitec.lib', 'property1');`
 2. use lib module `\Spbitec\Lib\Iblock::iblock_property_translate();`
@@ -23,3 +23,37 @@ For use lib Classes
 ### Classes
 - **Iblock** - Bitrix iblock translate functions
 - **CRedirector** - Redirect pages by regular expressions list in XML file 
+
+## Configure options
+`
+$spbitecLibCfg=[
+   'options'=>[
+      'tabs'=>[
+         "vote"=>[
+            "title" => 'Tab title 1',  
+            "options"=>[
+               'vote'=>[
+                  'title'=>'Setting title 1.1',
+                  'def'=>'',
+                  'type'=>array("checkbox", "Y"),             
+               ]             
+            ]
+         ],
+         "stat"=>[
+            "title" => 'Tab title 2',  
+            "options"=>[
+               'count_nomts'=>[
+                  'title'=>'Setting title 2.1',
+                  'def'=>'123',
+                  'type'=>array("text", "5"),                
+               ]
+            ]
+         ]
+      ]         
+   ]
+];
+
+`
+
+
+
