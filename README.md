@@ -7,8 +7,6 @@ Site propertys and common library module. Connfigured for every site
 * Copy Folder **spbitec.lib** to **/local/modules/**
 * Go to `/bitrix/admin/partner_modules.php?lang=ru` and install **spbitec.lib** module
 * Find settings in `/bitrix/admin/settings.php?lang=ru&mid=spbitec.lib&mid_menu=1`
-
-For use lib Classes
 * Add to **/local/php_interface/init.php**
 `\Bitrix\Main\Loader::includeModule('spbitec.lib');`
 
