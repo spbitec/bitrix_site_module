@@ -12,8 +12,8 @@ Site propertys and common library module. Connfigured for every site
 `\Bitrix\Main\Loader::includeModule('spbitec.lib');`
 
 ### Configure
-* Check or copy /config/spbitec.lib.cfg.php to /local/config/spbitec.lib.cfg.php
-* Use php array $spbitecLibCfg=[] to configure tabs and ooptions
+* Check or copy **/config/spbitec.lib.cfg.php** to **/local/config/spbitec.lib.cfg.php**
+* Use php array **$spbitecLibCfg=[]** to configure tabs and ooptions
  
 ### Using
 1. get Option `COption::GetOptionString('spbitec.lib', 'property1');`
