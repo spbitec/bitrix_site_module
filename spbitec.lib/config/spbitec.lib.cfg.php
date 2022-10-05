@@ -2,7 +2,7 @@
 /** 
  * Конфигурация настроек Модуля сайта
  * 
- * @version 1.1
+ * @version 1.2
  * 
  * Example: COption::GetOptionString('spbitec.lib', 'property1');
  * 
@@ -26,18 +26,24 @@ $spbitecLibCfg=[
                ]             
             ]
          ],
-         "stat"=>[
-            "title" => 'Статистика',  
+         "common"=>[
+            "title" => 'Общие',  
             "options"=>[
                'count_nomts'=>[
                   'title'=>'Номинантов',
                   'def'=>'123',
                   'type'=>array("text", "5"),                
+                  'comment'=>'Text comment under input 1',        
                ], 
                'count_citys'=>[
                   'title'=>'Городов',
                   'def'=>'28',
-                  'type'=>array("text", "5"),                 
+                  'type'=>array("text", "5"),    
+                  'comment'=>'Text comment under input 2',
+               ],
+               'info1'=>[
+                  'type'=>['info'],
+                  'html'=>'Text on the alert block'
                ],
                'count_noms'=>[
                   'title'=>'Номинаций',
