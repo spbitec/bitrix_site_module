@@ -1,5 +1,7 @@
 # 1C-Bitrix Universal site module
-Site propertys and common library module. Connfigured for every site 
+Site propertys and common library module. Configured for any site.
+This module allows you to create settings for the site in tabs that can be easily managed by the administrator later.
+
 [Spbitec ltd.](http://spbitec.ru "Spbitec ltd.") 2018
 
 ### Install
