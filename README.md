@@ -25,6 +25,15 @@ This module allows you to create settings for the site in tabs that can be easil
 - **Iblock** - Bitrix iblock translate functions
 - **CRedirector** - Redirect pages by regular expressions list in XML file 
 
+### Option structure
+
+#### type
+Array of strings
+- **info** - Show info baloon between rows ['html' - showed text]
+
+#### comment
+- **comment** - Show text after input
+
 ## Configure options
 `
 $spbitecLibCfg=[
@@ -37,7 +46,17 @@ $spbitecLibCfg=[
                   'title'=>'Setting title 1.1',
                   'def'=>'',
                   'type'=>array("checkbox", "Y"),             
-               ]             
+               ],
+               'feedback_email'=>[
+                  'title'=>'Emailtitle',
+                  'def'=>'',
+                  'type'=>["text"],                
+                  'comment'=>'Text comment under input',                
+               ],
+               'info1'=>[
+                  'type'=>['info'],
+                  'html'=>'Text on the alert block'
+               ]
             ]
          ],
          "stat"=>[
