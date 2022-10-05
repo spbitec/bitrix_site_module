@@ -1,4 +1,8 @@
 <?
+/** Generate html for of options in module settings
+ * @version 1.2
+ * */
+ 
 if(!$USER->IsAdmin())
    return;
    
@@ -80,21 +84,48 @@ foreach ($spbitecLibCfg['options']['params'] as $name=>$param){
  
       foreach($aTab['options'] as $arOptionCode=>$arOption):
       $val = COption::GetOptionString($module_id, $arOptionCode, $arOption['def']);
- 
+  
       ?>
-      <tr>
-         <td width="20%" nowrap <?if($arOption['type'][0]=="textarea") echo 'class="adm-detail-valign-top"'?>>
-            <label for="<?echo htmlspecialcharsbx($arOptionCode)?>"><?echo $arOption['title']?>:</label>
-         <td width="80%">
-            <? if($arOption['type'][0]=="checkbox"):?>
-            <input type="checkbox" id="<?echo htmlspecialcharsbx($arOptionCode)?>" name="<?echo htmlspecialcharsbx($arOptionCode)?>" value="Y"<?if($val=="Y")echo" checked";?>>
-            <? elseif($arOption['type'][0]=="text"):?>
-            <input type="text" size="<?echo $arOption['type'][1]?>" maxlength="255" value="<?echo htmlspecialcharsbx($val)?>" name="<?echo htmlspecialcharsbx($arOptionCode)?>">
-            <? elseif($arOption['type'][0]=="textarea"):?>
-            <textarea rows="<?echo $arOption['type'][1]?>" cols="<?echo $arOption['type'][2]?>" name="<?echo htmlspecialcharsbx($arOptionCode)?>"><?echo htmlspecialcharsbx($val)?></textarea>
-            <? endif?>
-         </td>
-      </tr>
+   <tr>
+      <? if($arOption['type'][0]=="info"):?>
+ 
+
+      <td valign="top" width="100%" colspan="2" align="center">
+         <div class="adm-info-message-wrap"><div class="adm-info-message">       
+            <?=$arOption['html']?>                
+            </div>
+         </div>
+      </td>
+            
+            
+      <? else:?>
+
+      <td width="20%" nowrap <?if($arOption['type'][0]=="textarea") echo 'class="adm-detail-valign-top"'?>>
+         <label for="<?echo htmlspecialcharsbx($arOptionCode)?>"><?echo $arOption['title']?>:</label>
+      <td width="80%">
+
+         <? if($arOption['type'][0]=="checkbox"):?>
+         <input type="checkbox" id="<?echo htmlspecialcharsbx($arOptionCode)?>" name="<?echo htmlspecialcharsbx($arOptionCode)?>" value="Y"<?if($val=="Y")echo" checked";?>>
+         <? elseif($arOption['type'][0]=="text"):?>
+         <input type="text" size="<?echo $arOption['type'][1]?>" maxlength="255" value="<?echo htmlspecialcharsbx($val)?>" name="<?echo htmlspecialcharsbx($arOptionCode)?>">            
+         <? elseif($arOption['type'][0]=="textarea"):?>
+         <textarea rows="<?echo $arOption['type'][1]?>" cols="<?echo $arOption['type'][2]?>" name="<?echo htmlspecialcharsbx($arOptionCode)?>"><?echo htmlspecialcharsbx($val)?></textarea>       
+         <? endif?>
+
+         <? if($arOption['comment']):?>
+           </td>
+           <tr>
+           <td width="20%" style="padding:0"></td>
+           <td width="80%" style="padding:0">
+				<div style="opacity:.75; font-size:.9em;">
+            <?=$arOption['comment']?>
+            </div>
+
+         <? endif?>
+
+         <? endif?>
+      </td>
+   </tr>
       <? endforeach?>
    
    <? endforeach?>
